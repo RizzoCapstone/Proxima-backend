@@ -37,8 +37,8 @@ router.get('/:type', async (req, res, next) => {
     switch (true) {
       case type === 'terrestrial':
         planets = await System.findAll({
-          limit: 25,
-          offset: offset,
+          limit: 225,
+//           offset: offset,
           where: {
             planetMassE: { [Op.between]: ['0', '2'] },
           },
@@ -46,7 +46,7 @@ router.get('/:type', async (req, res, next) => {
         break;
       case type === 'superearth':
         planets = await System.findAll({
-          limit: 25,
+          limit: 225,
           offset: offset,
           where: {
             planetMassE: { [Op.between]: ['2', '10'] },
@@ -59,7 +59,7 @@ router.get('/:type', async (req, res, next) => {
             planetMassE: { [Op.between]: ['10', '50'] },
             planetTemp: { [Op.between]: [0, 273]}
           },
-          limit: 25,
+          limit: 225,
           offset: offset,
         });
         break;
@@ -68,7 +68,7 @@ router.get('/:type', async (req, res, next) => {
           where: {
             planetMassE: { [Op.between]: ['50', '5000'] },
           },
-          limit: 25,
+          limit: 225,
           offset: offset,
         });
         break;
