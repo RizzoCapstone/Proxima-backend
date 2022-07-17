@@ -6,7 +6,6 @@ const {
 
 const systems = require('./seedData');
 
-
 async function seed() {
   await db.sync({ force: true });
   console.log('db synced!');

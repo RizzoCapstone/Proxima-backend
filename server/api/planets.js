@@ -57,7 +57,7 @@ router.get('/:type', async (req, res, next) => {
         planets = await System.findAll({
           where: {
             planetMassE: { [Op.between]: ['10', '50'] },
-            planetTemp: { [Op.between]: ['0', '273']}
+            planetTemp: { [Op.between]: [0, 273]}
           },
           limit: 25,
           offset: offset,

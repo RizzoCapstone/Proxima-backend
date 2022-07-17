@@ -42,7 +42,7 @@ const System = db.define('system', {
     type: Sequelize.STRING,
   },
   planetTemp: {
-    type: Sequelize.STRING,
+    type: DataTypes.INTEGER,
   },
   planetOrbitToStarRatio: {
     type: Sequelize.STRING,
