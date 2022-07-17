@@ -1,34 +1,15 @@
 const {
   db,
 
-  models: { User, Planet, System },
+  models: { System },
 } = require('../server/db');
 
 const systems = require('./seedData');
 
-const planets = [
-  {
-    name: 'earth',
-  },
-  {
-    name: 'mars',
-  },
-  {
-    name: 'neptune',
-  },
-];
 
 async function seed() {
   await db.sync({ force: true });
   console.log('db synced!');
-
-  await Promise.all(
-    planets.map((planet) =>
-      Planet.create({
-        name: planet.name,
-      })
-    )
-  );
 
   await Promise.all(
     systems.map((system) =>
@@ -67,25 +48,6 @@ async function seed() {
     )
   );
 
-  const users = await Promise.all([
-    User.create({
-      username: 'Kim',
-      firstName: 'Kim',
-      lastName: 'Possible',
-      email: 'kim@gmail.com',
-      password: '123',
-      isAdmin: false,
-    }),
-    User.create({
-      username: 'Bob',
-      firstName: 'Bob',
-      lastName: 'Belcher',
-      email: 'bob@gmail.com',
-      password: '123',
-      isAdmin: true,
-    }),
-  ]);
-  console.log(`seeded ${users.length} users`);
   console.log(`seeded successfully`);
 }
 
